@@ -1,25 +1,55 @@
 {
-  "name": "parcel-antd",
+  "name": "example-ts-parcel-antd-jest",
   "version": "1.0.0",
-  "description": "Use antd in parcel",
-  "main": "index.js",
-  "scripts": {
-    "start": "parcel index.html --no-cache"
-  },
-  "keywords": [],
-  "author": "afc163<afc163@gmail.com>",
+  "description": "Example project using typescript, parcel, antd, babel, jest",
+  "author": "time.dilation.matrix@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.0.0-0",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-plugin-import": "^1.6.3",
-    "less": "^3.9.0",
-    "parcel-bundler": "^1.4.1"
+  "scripts": {
+    "start": "concurrently -r \"yarn:type-check:w\" \"yarn:parcel\"",
+    "parcel": "parcel ./src/index.html -p 9001",
+    "build": "yarn run type-check && parcel build ./src/index.html --public-url '/'",
+    "test": "jest",
+    "test:w": "jest --watch",
+    "prettify": "prettier --write './src/**/*.{ts,tsx}'",
+    "type-check:w": "tsc --noEmit --watch",
+    "type-check": "tsc --noEmit"
   },
+  "keywords": [
+    "typescript",
+    "parcel",
+    "antd",
+    "babel",
+    "jest"
+  ],
   "dependencies": {
-    "antd": "^3.1.0",
+    "@babel/runtime": "^7.4.5",
+    "antd": "^3.19.3",
+    "core-js": "^3.1.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
-  }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.14",
+    "@types/node": "^12.0.8",
+    "@types/react": "^16.8.20",
+    "@types/react-dom": "^16.8.4",
+    "babel-plugin-import": "^1.12.0",
+    "concurrently": "^4.1.0",
+    "jest": "^24.8.0",
+    "less": "^3.9.0",
+    "parcel-bundler": "^1.4.1",
+    "parcel-plugin-less-js-enabled": "^1.0.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
